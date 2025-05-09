@@ -78,12 +78,8 @@ for idx, (appid, summary) in enumerate(data.items()):
         owners = int(nums[0])
     else:
         owners = 0
-    # 최근 2주간 플레이어 수
-    raw_players = details.get('players_2weeks', details.get('average_2weeks', 0))
-    try:
-        players = int(raw_players)
-    except:
-        players = 0
+        # 현재 동시접속자 수
+    players = 0 if summary.get('ccu') is None else int(summary.get('ccu', 0))
     # 평균 플레이타임
     raw_avg = details.get('average_forever', 0)
     try:
